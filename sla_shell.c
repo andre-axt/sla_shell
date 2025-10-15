@@ -42,6 +42,9 @@ int main() {
         if (strcmp(args[0], "pwd2") == 0){
             pwd2();
         }
+        if (strcmp(args[0], "echo2") == 0){
+            echo2(argc);
+        }
 
     }
     return 0;

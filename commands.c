@@ -13,3 +13,17 @@ int pwd2() {
     return 0;
 
 }
+
+int echo2(char **args) {
+    int i = 1;
+
+    while(args[i] != NULL){
+        printf("%s", args);
+        i++;
+        if (args[i] != NULL) {
+            printf(" "); 
+        }
+    }
+    printf("\n");
+    return 0;
+}

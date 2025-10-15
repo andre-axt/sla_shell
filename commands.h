@@ -2,5 +2,6 @@
 #define commands.h
 
 int pwd2();
+int echo2(char **a);
 
 #endif
