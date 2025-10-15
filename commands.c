@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 int pwd2() {
     char path[1024];
@@ -26,4 +27,18 @@ int echo2(char **args) {
     }
     printf("\n");
     return 0;
+}
+
+int cd2 (char **args) {
+    if(args[1] == NULL){
+        chdir(getenv("HOME"));
+    }
+    else{
+        if(args[1] != NULL){
+            chdir(getenv(args[1]));
+        }
+        if (chdir(args[1]) != 0) {
+            printf("error");
+        }
+    }
 }

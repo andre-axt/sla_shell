@@ -45,6 +45,9 @@ int main() {
         if (strcmp(args[0], "echo2") == 0){
             echo2(argc);
         }
+        if (strcmp(args[0], "cd2") == 0){
+            cd2(args);
+        }
 
     }
     return 0;
