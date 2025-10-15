@@ -3,7 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
-
+#include "commands.h"
 #define MAX_INPUT_SIZE 1024
 
 int main() {
@@ -38,6 +38,9 @@ int main() {
         }
         if (strcmp(args[0], "exit") == 0) {
             break;
+        }
+        if (strcmp(args[0], "pwd2") == 0){
+            pwd2();
         }
 
     }
