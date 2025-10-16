@@ -7,7 +7,7 @@ int pwd2() {
     if(getcwd(path, sizeof(path)) != NULL){
         printf("Current Path: %s\n", path);
     }else {
-        printf("Error");
+        printf("error\n");
         return 1;
     }
 
@@ -38,7 +38,7 @@ int cd2 (char **args) {
             chdir(getenv(args[1]));
         }
         if (chdir(args[1]) != 0) {
-            printf("error");
+            printf("error\n");
         }
     }
 }
@@ -53,8 +53,23 @@ int cat2 (char **args) {
             }
             fclose(file);
         }else{
-            printf("error");
+            printf("error\n");
         }
     }
     return 0;
 }
+
+int rm2 (char **args) {
+    if(args[1] != NULL){
+        if(remove(args[1]) == 0){
+            printf("removed\n");
+        }
+        else{
+            printf("error\n");
+        }
+    }else{
+        printf("missing file argument\n");
+    }
+    return 0;
+}
+

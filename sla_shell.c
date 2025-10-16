@@ -51,6 +51,9 @@ int main() {
         if (strcmp(args[0], "cat2") == 0){
             cat2(args);
         }
+        if (strcmp(args[0], "rm2") == 0){
+            rm2(args);
+        }
 
     }
     return 0;
