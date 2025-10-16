@@ -42,3 +42,19 @@ int cd2 (char **args) {
         }
     }
 }
+
+int cat2 (char **args) {
+    if(args[1] != NULL){
+        FILE *file;
+        char line[100];
+        if(file = fopen(args[1], "r")){
+            while (fgets(line, sizeof(line), file) != NULL){
+                printf("%s", line);
+            }
+            fclose(file);
+        }else{
+            printf("error");
+        }
+    }
+    return 0;
+}

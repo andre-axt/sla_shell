@@ -43,10 +43,13 @@ int main() {
             pwd2();
         }
         if (strcmp(args[0], "echo2") == 0){
-            echo2(argc);
+            echo2(args);
         }
         if (strcmp(args[0], "cd2") == 0){
             cd2(args);
+        }
+        if (strcmp(args[0], "cat2") == 0){
+            cat2(args);
         }
 
     }
