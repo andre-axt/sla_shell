@@ -6,6 +6,21 @@
 #include "commands.h"
 #define MAX_INPUT_SIZE 1024
 
+struct builtin_command {
+    char *name;
+    int (*func)(char **);
+};
+
+struct builtin_command commands[] = {
+    {"pwd2", pwd2},
+    {"echo2", echo2},
+    {"cd2", cd2},
+    {"cat2", cat2},
+    {"rm2", rm2},
+    {"ls2", ls2},
+    {NULL, NULL} 
+};
+
 int main() {
     char input[MAX_INPUT_SIZE];
     pid_t pid;
@@ -13,6 +28,7 @@ int main() {
     char *token;
     char *args[10];
     int x = 0;
+    int found = 0;
 
     while(1) {
         printf("sla_shell> ");
@@ -39,23 +55,16 @@ int main() {
         if (strcmp(args[0], "exit") == 0) {
             break;
         }
-        if (strcmp(args[0], "pwd2") == 0){
-            pwd2();
+        found = 0;
+        for (int i = 0; commands[i].name != NULL; i++){
+            if ( strcmp(args[0], commands[i].name) == 0) {
+                found = 1;
+                commands[i].func(args);
+                break;
+            }
         }
-        if (strcmp(args[0], "echo2") == 0){
-            echo2(args);
-        }
-        if (strcmp(args[0], "cd2") == 0){
-            cd2(args);
-        }
-        if (strcmp(args[0], "cat2") == 0){
-            cat2(args);
-        }
-        if (strcmp(args[0], "rm2") == 0){
-            rm2(args);
-        }
-        if (strcmp(args[0], "ls2") == 0){
-            ls2(args);
+        if(!found){
+            printf("Command not found");
         }
 
     }
