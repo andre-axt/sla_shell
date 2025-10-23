@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <dirent.h>
+
+#define GREEN "\033[0;32m"
+#define BLUE "\033[0;34m"
+#define COLOR_RESET "\033[0m"
 
 int pwd2() {
     char path[1024];
@@ -73,3 +78,22 @@ int rm2 (char **args) {
     return 0;
 }
 
+int ls2 (char **args) {
+    DIR *dir = opendir(".");
+    struct dirent *entry;
+
+    while ((entry = readdir(dir)) != NULL){
+        if(entry->d_name[0] != '.'){
+            if(entry->d_type == DT_DIR){
+                printf(BLUE "%s  " COLOR_RESET, entry->d_name);
+            }else{
+                printf(GREEN "%s  " COLOR_RESET, entry->d_name);
+            }
+
+        }
+
+    }
+    printf("\n");
+    closedir(dir);
+    return 0;
+}

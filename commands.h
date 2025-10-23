@@ -6,5 +6,6 @@ int echo2(char **args);
 int cd2(char **args);
 int cat2(char **args);
 int rm2(char **args);
+int ls2(char **args);
 
 #endif

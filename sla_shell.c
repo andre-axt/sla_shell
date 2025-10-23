@@ -54,6 +54,9 @@ int main() {
         if (strcmp(args[0], "rm2") == 0){
             rm2(args);
         }
+        if (strcmp(args[0], "ls2") == 0){
+            ls2(args);
+        }
 
     }
     return 0;
