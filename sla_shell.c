@@ -8,7 +8,7 @@
 
 struct builtin_command {
     char *name;
-    int (*func)(char **);
+    void (*func)(char **);
 };
 
 struct builtin_command commands[] = {
@@ -31,6 +31,7 @@ int main() {
     int found = 0;
 
     while(1) {
+        found = 0;
         printf("sla_shell> ");
         fflush(stdout);
 
@@ -53,9 +54,9 @@ int main() {
             }
         }
         if (strcmp(args[0], "exit") == 0) {
+            found = 1;
             break;
         }
-        found = 0;
         for (int i = 0; commands[i].name != NULL; i++){
             if ( strcmp(args[0], commands[i].name) == 0) {
                 found = 1;
@@ -64,7 +65,7 @@ int main() {
             }
         }
         if(!found){
-            printf("Command not found");
+            printf("Command not found\n");
         }
 
     }

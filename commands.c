@@ -7,34 +7,17 @@
 #define BLUE "\033[0;34m"
 #define COLOR_RESET "\033[0m"
 
-int pwd2() {
+void pwd2() {
     char path[1024];
     if(getcwd(path, sizeof(path)) != NULL){
         printf("Current Path: %s\n", path);
     }else {
         printf("error\n");
-        return 1;
     }
-
-    return 0;
 
 }
 
-int echo2(char **args) {
-    int i = 1;
-
-    while(args[i] != NULL){
-        printf("%s", args);
-        i++;
-        if (args[i] != NULL) {
-            printf(" "); 
-        }
-    }
-    printf("\n");
-    return 0;
-}
-
-int cd2 (char **args) {
+void cd2 (char **args) {
     if(args[1] == NULL){
         chdir(getenv("HOME"));
     }
@@ -48,7 +31,7 @@ int cd2 (char **args) {
     }
 }
 
-int cat2 (char **args) {
+void cat2 (char **args) {
     if(args[1] != NULL){
         FILE *file;
         char line[100];
@@ -61,10 +44,9 @@ int cat2 (char **args) {
             printf("error\n");
         }
     }
-    return 0;
 }
 
-int rm2 (char **args) {
+void rm2 (char **args) {
     if(args[1] != NULL){
         if(remove(args[1]) == 0){
             printf("removed\n");
@@ -75,10 +57,10 @@ int rm2 (char **args) {
     }else{
         printf("missing file argument\n");
     }
-    return 0;
+
 }
 
-int ls2 (char **args) {
+void ls2 (char **args) {
     DIR *dir = opendir(".");
     struct dirent *entry;
 
@@ -95,5 +77,4 @@ int ls2 (char **args) {
     }
     printf("\n");
     closedir(dir);
-    return 0;
 }
