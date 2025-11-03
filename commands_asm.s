@@ -7,6 +7,7 @@
 .global echo2
 .global strlen2
 .global pwd2
+.global cd2
 
 strlen2:
     mov $0, %rax
@@ -70,7 +71,13 @@ pwd2:
     syscall
 
     call print_string
-    
+
     mov $newline, %rdi
     call print_string
+    ret
+
+cd2:
+    mov 8(%rax), %rdi
+    mov $80, %rax
+    syscall
     ret
