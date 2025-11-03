@@ -7,16 +7,6 @@
 #define BLUE "\033[0;34m"
 #define COLOR_RESET "\033[0m"
 
-void pwd2() {
-    char path[1024];
-    if(getcwd(path, sizeof(path)) != NULL){
-        printf("Current Path: %s\n", path);
-    }else {
-        printf("error\n");
-    }
-
-}
-
 void cd2 (char **args) {
     if(args[1] == NULL){
         chdir(getenv("HOME"));

@@ -1,10 +1,12 @@
 .section .data
     space: .asciz " "
     newline: .asciz "\n"
+    buffer: .space 1024
 
 .section .text
 .global echo2
 .global strlen2
+.global pwd2
 
 strlen2:
     mov $0, %rax
@@ -59,4 +61,16 @@ print_string:
     mov $1, %rax
     mov $1, %rdi
     syscall
+    ret
+
+pwd2:
+    mov $79, %rax
+    mov $buffer, %rdi
+    mov $1024, %rsi
+    syscall
+
+    call print_string
+    
+    mov $newline, %rdi
+    call print_string
     ret
